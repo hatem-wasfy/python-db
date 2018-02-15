@@ -1,3 +1,5 @@
 Flask==0.10.1
+python-google-places
+psycopg2 
 freeze
-psycopg2
+urlparse3
