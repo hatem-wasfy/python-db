@@ -3,3 +3,5 @@ python-google-places
 psycopg2 
 freeze
 urlparse3
+flask-sqlalchemy
+
