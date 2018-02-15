@@ -2,13 +2,13 @@
 
 from flask import Flask, redirect, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-from hashids import Hashids
+#from hashids import Hashids
 
 # Config
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///yrkgfdwphwaktc:c5b75242c71781f8dbdb1df56f91ae89cc291dcbeb54fd88d3b543ebf5b4a207@ec2-107-22-175-33.compute-1.amazonaws.com:5432/def7m51jhsgoca'
 SALT = 'Hashids SALT'
 
 
