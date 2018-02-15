@@ -4,4 +4,3 @@ psycopg2
 freeze
 urlparse3
 flask-sqlalchemy
-flask.ext
