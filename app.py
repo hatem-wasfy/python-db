@@ -36,4 +36,9 @@ def post_to_db():
 def enter_data(): 
     return render_template("dataentry.html")
   
+    
+    
+if __name__ == '__main__':
+    #app.debug = True
+    app.run()
   
