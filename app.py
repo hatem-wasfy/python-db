@@ -8,6 +8,19 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
+import psycopg2
+import urlparse
+import os
+
+try:
+    urlparse.uses_netloc.append("postgres") 
+    connection_params = urlparse.urlparse(os.environ["DATABASE_URL"])
+    db_connection = psycopg2.connect(database = connection_params.path[1:], user = connection_params.username, password = connection_params.password, host = connection_params.hostname, port = connection_params.port)
+except:
+    print "Database connection failed."
+
+    
+    
 # Flask app should start in global layout
 app = Flask(__name__)
 
