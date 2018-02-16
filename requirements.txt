@@ -1,6 +1,6 @@
 Flask==0.10.1
 python-google-places
-psycopg2 
+psycopg2-binary
 freeze
 urlparse3
 flask-sqlalchemy
