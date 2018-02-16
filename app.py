@@ -17,7 +17,7 @@ conn = psycopg2.connect(
     user="swkjnmiksbabsb",
     password="c9a348935037d022f6450c7deb6df6ad9d846d736bf04c44b52338092f046554",
     host="ec2-174-129-221-240.compute-1.amazonaws.com",
-    port="5432"
+    port=5432
 )
 
 
