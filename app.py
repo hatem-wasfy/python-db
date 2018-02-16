@@ -14,15 +14,22 @@ app = Flask(__name__)
 
 #############******************************************
 
-###conn = psycopg2.connect(
-    ###database="d50jsgearpigne",
-    ###user="swkjnmiksbabsb",
-    ###password="c9a348935037d022f6450c7deb6df6ad9d846d736bf04c44b52338092f046554",
-    ###host="ec2-174-129-221-240.compute-1.amazonaws.com",
-    ###port=5432
-###)
+conn = psycopg2.connect(
+    database="d50jsgearpigne",
+    user="swkjnmiksbabsb",
+    password="c9a348935037d022f6450c7deb6df6ad9d846d736bf04c44b52338092f046554",
+    host="ec2-174-129-221-240.compute-1.amazonaws.com",
+    port=5432
+)
 
 #############******************************************
+
+curs = conn.cursor()
+curs.execute("SELECT ...")
+for row in curs:
+   print row
+
+
 
 
 ##cur = conn.cursor()
@@ -31,40 +38,9 @@ app = Flask(__name__)
 ##cur.close()
 ##conn.close()
 
-get_vendors()
 
-
-def get_vendors():
-    """ query data from the vendors table """
-    conn = None
-    try:
-        conn = psycopg2.connect(
-            database="d50jsgearpigne",
-            user="swkjnmiksbabsb",
-            password="c9a348935037d022f6450c7deb6df6ad9d846d736bf04c44b52338092f046554",
-            host="ec2-174-129-221-240.compute-1.amazonaws.com",
-            port=5432
-        )
-        
-        cur = conn.cursor()
-        #cur.execute("SELECT vendor_id, vendor_name FROM vendors ORDER BY vendor_name")
-        cur.execute("SELECT * FROM japandb")
-        
-        print("The number of parts: ", cur.rowcount)
-        row = cur.fetchone()
- 
-        while row is not None:
-            print(row)
-            row = cur.fetchone()
- 
-        cur.close()
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
-    finally:
-        if conn is not None:
-            conn.close()
-            
-            
+##**************************************
+###get_vendors()
 
 # Config
 
