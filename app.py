@@ -31,7 +31,6 @@ app = Flask(__name__)
 ##cur.close()
 ##conn.close()
 
-get_vendor()
 
 
 def get_vendors():
@@ -95,4 +94,7 @@ if __name__ == '__main__':
     print ("Starting app on port %d" %(port))
 
     app.run(debug=True, port=port, host='0.0.0.0')
+    
+    get_vendors()
+
     
