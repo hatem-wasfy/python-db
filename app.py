@@ -32,7 +32,7 @@ attraction = "food"
 places = "a1 a2"
 lastchangedate = "DEFAULT"
     
-query =  "INSERT INTO items (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %s);"
+query =  "INSERT INTO japandb (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %s);"
 data = (city, attraction, places, lastchangedate)
 
 curs = conn.cursor()
