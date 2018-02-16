@@ -35,7 +35,8 @@ lastchangedate = "DEFAULT"
 query =  "INSERT INTO items (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %s);"
 data = (city, attraction, places, lastchangedate)
 
-cursor.execute(query, data)
+curs = conn.cursor()
+curs.execute(query, data)
 conn.commit()
 
 
