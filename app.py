@@ -31,6 +31,7 @@ app = Flask(__name__)
 ##cur.close()
 ##conn.close()
 
+get_vendors()
 
 
 def get_vendors():
@@ -95,6 +96,6 @@ if __name__ == '__main__':
 
     app.run(debug=True, port=port, host='0.0.0.0')
     
-    get_vendors()
+    ###get_vendors()
 
     
