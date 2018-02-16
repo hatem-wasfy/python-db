@@ -7,7 +7,10 @@
 import os
 from urllib import parse
 import psycopg2
-import flask
+from flask import Flask
+from flask import request
+from flask import make_response
+
 
 app = Flask(__name__)
 #parse.uses_netloc.append("postgres")
