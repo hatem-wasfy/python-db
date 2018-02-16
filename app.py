@@ -25,7 +25,7 @@ conn = psycopg2.connect(
 #############******************************************
 
 curs = conn.cursor()
-curs.execute("SELECT ...")
+curs.execute("SELECT * FROM japandb")
 for row in curs:
     print(row)
 
