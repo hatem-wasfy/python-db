@@ -27,7 +27,7 @@ conn = psycopg2.connect(
 curs = conn.cursor()
 curs.execute("SELECT ...")
 for row in curs:
-   print row
+    print(row)
 
 
 
