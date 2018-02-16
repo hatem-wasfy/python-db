@@ -7,7 +7,9 @@
 import os
 from urllib import parse
 import psycopg2
+import flask
 
+app = Flask(__name__)
 #parse.uses_netloc.append("postgres")
 #url = parse.urlparse(os.environ["postgres://swkjnmiksbabsb:c9a348935037d022f6450c7deb6df6ad9d846d736bf04c44b52338092f046554@ec2-174-129-221-240.compute-1.amazonaws.com:5432/d50jsgearpigne"])
 
