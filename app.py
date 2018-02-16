@@ -27,19 +27,19 @@ conn = psycopg2.connect(
 #######################################
 #WRITE
 
-    city = "Fukuoka"
-    attraction = "food"
-    places = "a1 a2"
-    lastchangedate = "DEFAULT"
+city = "Fukuoka"
+attraction = "food"
+places = "a1 a2"
+lastchangedate = "DEFAULT"
     
-    query =  "INSERT INTO items (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %s);"
-    data = (city, attraction, places, lastchangedate)
+query =  "INSERT INTO items (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %s);"
+data = (city, attraction, places, lastchangedate)
 
-    cursor.execute(query, data)
-    conn.commit()
+cursor.execute(query, data)
+conn.commit()
 
 
-    print("***************************************")
+print("***************************************")
 
 #######################################
 
