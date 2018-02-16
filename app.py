@@ -8,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///yrkgfdwphwaktc:c5b75242c71781f8dbdb1df56f91ae89cc291dcbeb54fd88d3b543ebf5b4a207@ec2-107-22-175-33.compute-1.amazonaws.com:5432/def7m51jhsgoca'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///swkjnmiksbabsb:c9a348935037d022f6450c7deb6df6ad9d846d736bf04c44b52338092f046554@ec2-174-129-221-240.compute-1.amazonaws.com:5432/d50jsgearpigne'
 SALT = 'Hashids SALT'
 
 
