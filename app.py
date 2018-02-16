@@ -24,12 +24,35 @@ conn = psycopg2.connect(
 
 #############******************************************
 
+#######################################
+#WRITE
+
+    city = "Fukuoka"
+    attraction = "food"
+    places = "a1 a2"
+    lastchangedate = "DEFAULT"
+    
+    query =  "INSERT INTO items (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %s);"
+    data = (city, attraction, places, lastchangedate)
+
+    cursor.execute(query, data)
+    conn.commit()
+
+
+    print("***************************************")
+
+#######################################
+
+
+
+#######################################
+#READ
 curs = conn.cursor()
 curs.execute("SELECT * FROM japandb")
 for row in curs:
     print(row)
 
-
+############################################
 
 
 ##cur = conn.cursor()
