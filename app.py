@@ -15,6 +15,8 @@ app = Flask(__name__)
 #############******************************************
 
 #CONNECT
+print("Connection to our database part")
+
 conn = psycopg2.connect(
     database="d50jsgearpigne",
     user="swkjnmiksbabsb",
@@ -30,6 +32,7 @@ conn = psycopg2.connect(
 
 ####################################################
 # DELETE ALL ROWS FROM THE TABLE
+print("Delete rows from our table part")
 
 curs = conn.cursor()
 curs.execute("TRUNCATE TABLE japandb")
@@ -41,10 +44,11 @@ curs.execute("TRUNCATE TABLE japandb")
 
 #######################################
 #WRITE
+print("Writing row of data to our table part")
 
 city = "Fukuoka"
 attraction = "food"
-places = "a1 a2"
+places = "a1 a2 \n a3 a4\n"
 ###lastchangedate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
 ###query =  "INSERT INTO japandb (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %Y-%m-%d %H:%M:%S);"
@@ -66,6 +70,8 @@ print("***************************************")
 
 #######################################
 #READ
+print("Reading all the rows of our table part")
+
 curs = conn.cursor()
 curs.execute("SELECT * FROM japandb")
 for row in curs:
