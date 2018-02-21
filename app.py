@@ -12,9 +12,9 @@ import json
 from googleplaces import GooglePlaces, types, lang
 
 
-global YOUR_API_KEY = 'AIzaSyADsZZiGIWF2laJkl5qNE5EUkSXkye4HG4'
-global robot_photo_url = "https://cdn.pixabay.com/photo/2014/04/03/11/55/robot-312566_960_720.png"
-global google_places = GooglePlaces(YOUR_API_KEY)
+YOUR_API_KEY = 'AIzaSyADsZZiGIWF2laJkl5qNE5EUkSXkye4HG4'
+robot_photo_url = "https://cdn.pixabay.com/photo/2014/04/03/11/55/robot-312566_960_720.png"
+google_places = GooglePlaces(YOUR_API_KEY)
 
 #########################################################
 
