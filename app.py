@@ -37,12 +37,12 @@ for place in query_result.places:
     ###ok###print(place.__dict__.keys())
     ###print(place.__dict__)
     place_name = place.name
+    print(place.name)
     place_geo_loc = place.geo_location
     place_id = place.place_id
     place.get_details()
     place_url=place.url
     ###global place_and_url
-        
     place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
         
         #place_details=place.details
@@ -82,10 +82,10 @@ conn = psycopg2.connect(
 
 ####################################################
 # DELETE ALL ROWS FROM THE TABLE
-###print("Delete rows from our table part")
+print("Delete rows from our table part")
 
-###curs = conn.cursor()
-###curs.execute("TRUNCATE TABLE japandb")
+curs = conn.cursor()
+curs.execute("TRUNCATE TABLE japandb")
 #conn.close()
 
 ####################################################
