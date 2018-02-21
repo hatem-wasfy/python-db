@@ -170,21 +170,6 @@ def readtb(tbname, conn):
     ##app.run(debug=True)
 
     
-    
-#------------------------------------------------------------#
-
-#calling my functions and steps
-
-city = "Tokyo"
-attraction = "fashion"  
-tbname = "japantb"
-#sending order to read city and attraction from google and write them to our database
-###insert(city, attraction, conn)
-readtb(tbname, conn)
-#closing the connection to the database as the last step
-conn.close()
-
-#------------------------------------------------------------#
 
 
 
@@ -203,6 +188,25 @@ def delall(tbname, conn):
     return
 
     ####################################################
+    
+    
+    
+#------------------------------------------------------------#
+
+#calling my functions and steps
+
+city = "Tokyo"
+attraction = "fashion"  
+tbname = "japantb"
+#sending order to read city and attraction from google and write them to our database
+###insert(city, attraction, conn)
+delall(tbname, conn)
+readtb(tbname, conn)
+#closing the connection to the database as the last step
+conn.close()
+
+#------------------------------------------------------------#
+
     
     
 if __name__ == '__main__':
