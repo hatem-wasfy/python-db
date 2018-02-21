@@ -117,7 +117,7 @@ for place in query_result.places:
     place_url=place.url
     
     query =  "INSERT INTO japantb (city, attraction, places, url) VALUES (%s, %s, %s, %s);"
-    data = (city, attraction, place_name, url)
+    data = (city, attraction, place_name, place_url)
     
     ###global place_and_url
     ###place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
