@@ -49,17 +49,13 @@ print("Writing row of data to our table part")
 city = "Fukuoka"
 attraction = "food"
 places = "a1 a2 \n a3 a4\n"
-###lastchangedate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
-###query =  "INSERT INTO japandb (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %Y-%m-%d %H:%M:%S);"
-###data = (city, attraction, places, lastchangedate)
 
 query =  "INSERT INTO japandb (city, attraction, places) VALUES (%s, %s, %s);"
 data = (city, attraction, places)
 
-curs = conn.cursor()
-curs.execute(query, data)
-conn.commit()
+###curs = conn.cursor()
+###curs.execute(query, data)
+###conn.commit()
 
 
 print("***************************************")
