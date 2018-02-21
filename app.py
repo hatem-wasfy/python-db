@@ -203,7 +203,7 @@ tbname = "japantb"
 
 #sending orders, for example to read city and attraction from google and write them to our database
 
-###delall(tbname, conn)
+delall(tbname, conn)
 ###insert(city, attraction, tbname, conn)
 ###readtb(tbname, conn)
 
@@ -211,6 +211,7 @@ for city in cities:
     for attraction in attractions:
         words = "City: " + city + " ,attraction: " + attraction
         print(words)
+        
 
     
 
