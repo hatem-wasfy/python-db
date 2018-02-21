@@ -12,9 +12,9 @@ import json
 from googleplaces import GooglePlaces, types, lang
 
 
-YOUR_API_KEY = 'AIzaSyADsZZiGIWF2laJkl5qNE5EUkSXkye4HG4'
-robot_photo_url = "https://cdn.pixabay.com/photo/2014/04/03/11/55/robot-312566_960_720.png"
-google_places = GooglePlaces(YOUR_API_KEY)
+global YOUR_API_KEY = 'AIzaSyADsZZiGIWF2laJkl5qNE5EUkSXkye4HG4'
+global robot_photo_url = "https://cdn.pixabay.com/photo/2014/04/03/11/55/robot-312566_960_720.png"
+global google_places = GooglePlaces(YOUR_API_KEY)
 
 #########################################################
 
@@ -26,33 +26,10 @@ app = Flask(__name__)
 
 ###########################################################################################
 
-city = "Tokyo"
-attraction = "fashion"    
+#city = "Tokyo"
+#attraction = "fashion"    
 
 ###query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
-
-###place_and_url=""
-###for place in query_result.places:
-    #Returned places from a query are place summaries.
-    ###ok###print(place.__dict__.keys())
-    ###print(place.__dict__)
-    ###place_name = place.name
-    ###print(place.name)
-    ###place_geo_loc = place.geo_location
-    ###place_id = place.place_id
-    ###place.get_details()
-    ###place_url=place.url
-    ###global place_and_url
-    ###place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
-        
-        #place_details=place.details
-        #print(place_details.__dict__.keys())
-        #pf=place.photos
-    ###print("******************************")
-
-###print("----------------------------------------------------------")
-###print(place_and_url)
-###print("----------------------------------------------------------")
 
 
 
@@ -77,98 +54,128 @@ conn = psycopg2.connect(
 
 #############******************************************
 
+#------------------------------------------------------------#
 
-
-
-####################################################
-# DELETE ALL ROWS FROM THE TABLE
-print("Delete rows from our table part")
-
-curs = conn.cursor()
-curs.execute("TRUNCATE TABLE japantb;")
-#conn.close()
-
-####################################################
-
-
-
-#######################################
-#WRITE
-print("Writing row of data to our table part")
+#calling my functions and steps
 
 city = "Tokyo"
-attraction = "fashion"
-#places = place_and_url
-#-------------------------------------------------------------
-#google query
-
-query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
-
-place_and_url=""
-for place in query_result.places:
-    #Returned places from a query are place summaries.
-    ###ok###print(place.__dict__.keys())
-    ###print(place.__dict__)
-    place_name = place.name
-    print(place.name)
-    place_geo_loc = place.geo_location
-    place_id = place.place_id
-    place.get_details()
-    place_url=place.url
-    
-    query =  "INSERT INTO japantb (city, attraction, places, url) VALUES (%s, %s, %s, %s);"
-    data = (city, attraction, place_name, place_url)
-    curs = conn.cursor()
-    curs.execute(query, data)
-    
-    
-    ###global place_and_url
-    ###place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
-        
-        #place_details=place.details
-        #print(place_details.__dict__.keys())
-        #pf=place.photos
-    print("******************************")
-conn.commit()
-
-#------------------------------------------------------------------------------
-
-
-
-
-###query =  "INSERT INTO japandb (city, attraction, places) VALUES (%s, %s, %s);"
-###data = (city, attraction, place_and_url)
-
-###curs = conn.cursor()
-###curs.execute(query, data)
-###conn.commit()
-
-print("***************************************")
-
-#######################################
-
-
-
-#######################################
-#READ
-print("Reading all the rows of our table part")
-
-curs = conn.cursor()
-curs.execute("SELECT * FROM japantb;")
-for row in curs:
-    print(row)
-
-############################################
-
-
-##cur = conn.cursor()
-##cur.execute(sql, (value1,value2))
-
-##cur.close()
-
+attraction = "fashion"  
+tbname = "japantb"
+#sending order to read city and attraction from google and write them to our database
+###insert(city, attraction, conn)
+readtb(tbname, conn)
+#closing the connection to the database as the last step
 conn.close()
 
-##**************************************
+#------------------------------------------------------------#
+
+
+
+
+def delall(tbname, conn):
+    ####################################################
+    # DELETE ALL ROWS FROM THE TABLE
+    print("Delete rows from our table part")
+
+    curs = conn.cursor()
+    line = "TRUNCATE TABLE " + tbname + ";"
+    #curs.execute("TRUNCATE TABLE japantb;")
+    curs.execute(line)
+    
+    #conn.close()
+    return
+
+    ####################################################
+
+    
+
+####Function to write city data from Google to our database
+
+def insert(city, attraction, tbname, conn):
+    #######################################
+    #WRITE
+    print("Writing row of data to our table part")
+
+    #city = "Tokyo"
+    #attraction = "fashion"
+    #places = place_and_url
+    #-------------------------------------------------------------
+    #google query
+
+    query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
+
+    place_and_url=""
+    for place in query_result.places:
+        #Returned places from a query are place summaries.
+        ###ok###print(place.__dict__.keys())
+        ###print(place.__dict__)
+        place_name = place.name
+        print(place.name)
+        place_geo_loc = place.geo_location
+        place_id = place.place_id
+        place.get_details()
+        place_url=place.url
+    
+        #query =  "INSERT INTO japantb (city, attraction, places, url) VALUES (%s, %s, %s, %s);"
+        queryline =  "INSERT INTO " + tbname + " (city, attraction, places, url) VALUES (%s, %s, %s, %s);"
+        data = (city, attraction, place_name, place_url)
+        curs = conn.cursor()
+        curs.execute(queryline, data)
+    
+    
+        ###global place_and_url
+        ###place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
+        
+            #place_details=place.details
+            #print(place_details.__dict__.keys())
+            #pf=place.photos
+        print("******************************")
+    conn.commit()
+
+    #------------------------------------------------------------------------------
+
+
+
+
+    ###query =  "INSERT INTO japandb (city, attraction, places) VALUES (%s, %s, %s);"
+    ###data = (city, attraction, place_and_url)
+
+    ###curs = conn.cursor()
+    ###curs.execute(query, data)
+    ###conn.commit()
+
+    print("***************************************")
+
+    #######################################
+    return
+
+
+
+    #######################################
+
+def readtb(tbname, conn):
+    #READ
+    print("Reading all the rows of our table part")
+    line = "SELECT * FROM " + tbname + ";"
+    curs = conn.cursor()
+    curs.execute(line)
+    for row in curs:
+        print(row)
+    
+    ############################################
+
+
+    ##cur = conn.cursor()
+    ##cur.execute(sql, (value1,value2))
+
+    ##cur.close()
+
+    ####conn.close()
+
+    ##**************************************
+    return
+
+
 ###get_vendors()
 
 # Config
