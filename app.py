@@ -208,8 +208,11 @@ tbname = "japantb"
 ###readtb(tbname, conn)
 
 for city in cities:
-    print(city)
+    for attraction in attractions:
+    words = "City: " + city + " ,attraction: " + attraction
+    print(words)
 
+    
 
 
 #closing the connection to the database as the last step
