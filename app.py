@@ -54,38 +54,6 @@ conn = psycopg2.connect(
 
 #############******************************************
 
-#------------------------------------------------------------#
-
-#calling my functions and steps
-
-city = "Tokyo"
-attraction = "fashion"  
-tbname = "japantb"
-#sending order to read city and attraction from google and write them to our database
-###insert(city, attraction, conn)
-readtb(tbname, conn)
-#closing the connection to the database as the last step
-conn.close()
-
-#------------------------------------------------------------#
-
-
-
-
-def delall(tbname, conn):
-    ####################################################
-    # DELETE ALL ROWS FROM THE TABLE
-    print("Delete rows from our table part")
-
-    curs = conn.cursor()
-    line = "TRUNCATE TABLE " + tbname + ";"
-    #curs.execute("TRUNCATE TABLE japantb;")
-    curs.execute(line)
-    
-    #conn.close()
-    return
-
-    ####################################################
 
     
 
@@ -201,6 +169,42 @@ def readtb(tbname, conn):
 ##if __name__ == '__main__':
     ##app.run(debug=True)
 
+    
+    
+#------------------------------------------------------------#
+
+#calling my functions and steps
+
+city = "Tokyo"
+attraction = "fashion"  
+tbname = "japantb"
+#sending order to read city and attraction from google and write them to our database
+###insert(city, attraction, conn)
+readtb(tbname, conn)
+#closing the connection to the database as the last step
+conn.close()
+
+#------------------------------------------------------------#
+
+
+
+
+def delall(tbname, conn):
+    ####################################################
+    # DELETE ALL ROWS FROM THE TABLE
+    print("Delete rows from our table part")
+
+    curs = conn.cursor()
+    line = "TRUNCATE TABLE " + tbname + ";"
+    #curs.execute("TRUNCATE TABLE japantb;")
+    curs.execute(line)
+    
+    #conn.close()
+    return
+
+    ####################################################
+    
+    
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
