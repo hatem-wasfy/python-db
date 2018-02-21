@@ -209,8 +209,8 @@ tbname = "japantb"
 
 for city in cities:
     for attraction in attractions:
-    words = "City: " + city + " ,attraction: " + attraction
-    print(words)
+        words = "City: " + city + " ,attraction: " + attraction
+        print(words)
 
     
 
