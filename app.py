@@ -29,30 +29,30 @@ app = Flask(__name__)
 city = "Tokyo"
 attraction = "fashion"    
 
-query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
+###query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
 
-place_and_url=""
-for place in query_result.places:
+###place_and_url=""
+###for place in query_result.places:
     #Returned places from a query are place summaries.
     ###ok###print(place.__dict__.keys())
     ###print(place.__dict__)
-    place_name = place.name
-    print(place.name)
-    place_geo_loc = place.geo_location
-    place_id = place.place_id
-    place.get_details()
-    place_url=place.url
+    ###place_name = place.name
+    ###print(place.name)
+    ###place_geo_loc = place.geo_location
+    ###place_id = place.place_id
+    ###place.get_details()
+    ###place_url=place.url
     ###global place_and_url
-    place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
+    ###place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
         
         #place_details=place.details
         #print(place_details.__dict__.keys())
         #pf=place.photos
-    print("******************************")
+    ###print("******************************")
 
-print("----------------------------------------------------------")
+###print("----------------------------------------------------------")
 ###print(place_and_url)
-print("----------------------------------------------------------")
+###print("----------------------------------------------------------")
 
 
 
@@ -82,10 +82,10 @@ conn = psycopg2.connect(
 
 ####################################################
 # DELETE ALL ROWS FROM THE TABLE
-###print("Delete rows from our table part")
+print("Delete rows from our table part")
 
-###curs = conn.cursor()
-###curs.execute("TRUNCATE TABLE japandb")
+curs = conn.cursor()
+curs.execute("TRUNCATE TABLE japantb")
 #conn.close()
 
 ####################################################
@@ -98,11 +98,42 @@ print("Writing row of data to our table part")
 
 city = "Tokyo"
 attraction = "fashion"
-places = place_and_url
+#places = place_and_url
+#-------------------------------------------------------------
+#google query
 
-query =  "INSERT INTO japandb (city, attraction, places) VALUES (%s, %s, %s);"
-#data = (city, attraction, places)
-data = (city, attraction, place_and_url)
+query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
+
+place_and_url=""
+for place in query_result.places:
+    #Returned places from a query are place summaries.
+    ###ok###print(place.__dict__.keys())
+    ###print(place.__dict__)
+    place_name = place.name
+    print(place.name)
+    place_geo_loc = place.geo_location
+    place_id = place.place_id
+    place.get_details()
+    place_url=place.url
+    
+    query =  "INSERT INTO japantb (city, attraction, places, url) VALUES (%s, %s, %s, %s);"
+    data = (city, attraction, place_name, url)
+    
+    ###global place_and_url
+    ###place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
+        
+        #place_details=place.details
+        #print(place_details.__dict__.keys())
+        #pf=place.photos
+    print("******************************")
+
+#------------------------------------------------------------------------------
+
+
+
+
+###query =  "INSERT INTO japandb (city, attraction, places) VALUES (%s, %s, %s);"
+###data = (city, attraction, place_and_url)
 
 ###curs = conn.cursor()
 ###curs.execute(query, data)
@@ -119,7 +150,7 @@ print("***************************************")
 print("Reading all the rows of our table part")
 
 curs = conn.cursor()
-curs.execute("SELECT * FROM japandb")
+curs.execute("SELECT * FROM japantb")
 for row in curs:
     print(row)
 
@@ -132,7 +163,6 @@ for row in curs:
 ##cur.close()
 
 conn.close()
-
 
 ##**************************************
 ###get_vendors()
