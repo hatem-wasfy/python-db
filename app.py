@@ -27,7 +27,7 @@ app = Flask(__name__)
 ###########################################################################################
 
 city = "Tokyo"
-attraction = "food"    
+attraction = "fashion"    
 
 query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
 
@@ -82,10 +82,10 @@ conn = psycopg2.connect(
 
 ####################################################
 # DELETE ALL ROWS FROM THE TABLE
-print("Delete rows from our table part")
+###print("Delete rows from our table part")
 
-curs = conn.cursor()
-curs.execute("TRUNCATE TABLE japandb")
+###curs = conn.cursor()
+###curs.execute("TRUNCATE TABLE japandb")
 #conn.close()
 
 ####################################################
