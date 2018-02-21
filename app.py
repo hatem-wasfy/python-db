@@ -195,15 +195,22 @@ def delall(tbname, conn):
 
 #calling my functions and steps
 
-city = "Tokyo"
-attraction = "fashion"  
+###city = "Tokyo"
+###attraction = "fashion" 
+cities= ["Tokyo", "Fukuoka", "Osaka", "Kyoto"]
+attractions = ["food", "shopping","souvenir", "fashion"]
 tbname = "japantb"
 
 #sending orders, for example to read city and attraction from google and write them to our database
 
 ###delall(tbname, conn)
-insert(city, attraction, tbname, conn)
-readtb(tbname, conn)
+###insert(city, attraction, tbname, conn)
+###readtb(tbname, conn)
+
+for city in cities:
+    print(city)
+
+
 
 #closing the connection to the database as the last step
 conn.close()
