@@ -82,10 +82,10 @@ conn = psycopg2.connect(
 
 ####################################################
 # DELETE ALL ROWS FROM THE TABLE
-###print("Delete rows from our table part")
+print("Delete rows from our table part")
 
-###curs = conn.cursor()
-###curs.execute("TRUNCATE TABLE japandb")
+curs = conn.cursor()
+curs.execute("TRUNCATE TABLE japandb")
 #conn.close()
 
 ####################################################
@@ -97,7 +97,7 @@ conn = psycopg2.connect(
 print("Writing row of data to our table part")
 
 city = "Tokyo"
-attraction = "food"
+attraction = "fashion"
 places = place_and_url
 
 query =  "INSERT INTO japandb (city, attraction, places) VALUES (%s, %s, %s);"
