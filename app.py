@@ -198,10 +198,13 @@ def delall(tbname, conn):
 city = "Tokyo"
 attraction = "fashion"  
 tbname = "japantb"
-#sending order to read city and attraction from google and write them to our database
-###insert(city, attraction, conn)
-delall(tbname, conn)
+
+#sending orders, for example to read city and attraction from google and write them to our database
+
+###delall(tbname, conn)
+insert(city, attraction, tbname, conn)
 readtb(tbname, conn)
+
 #closing the connection to the database as the last step
 conn.close()
 
