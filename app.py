@@ -108,7 +108,6 @@ data = (city, attraction, place_and_url)
 ###curs.execute(query, data)
 ###conn.commit()
 
-
 print("***************************************")
 
 #######################################
