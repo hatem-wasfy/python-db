@@ -30,10 +30,13 @@ conn = psycopg2.connect(
 city = "Fukuoka"
 attraction = "food"
 places = "a1 a2"
-lastchangedate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+###lastchangedate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-query =  "INSERT INTO japandb (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %Y-%m-%d %H:%M:%S);"
-data = (city, attraction, places, lastchangedate)
+###query =  "INSERT INTO japandb (city, attraction, places, lastchangedate) VALUES (%s, %s, %s, %Y-%m-%d %H:%M:%S);"
+###data = (city, attraction, places, lastchangedate)
+
+query =  "INSERT INTO japandb (city, attraction, places) VALUES (%s, %s, %s);"
+data = (city, attraction, places)
 
 curs = conn.cursor()
 curs.execute(query, data)
