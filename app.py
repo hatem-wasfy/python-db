@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 #############******************************************
 
+#CONNECT
 conn = psycopg2.connect(
     database="d50jsgearpigne",
     user="swkjnmiksbabsb",
@@ -23,6 +24,20 @@ conn = psycopg2.connect(
 )
 
 #############******************************************
+
+
+
+
+####################################################
+# DELETE ALL ROWS FROM THE TABLE
+
+curs = conn.cursor()
+curs.execute("TRUNCATE TABLE japandb")
+#conn.close()
+
+####################################################
+
+
 
 #######################################
 #WRITE
@@ -63,7 +78,8 @@ for row in curs:
 ##cur.execute(sql, (value1,value2))
 
 ##cur.close()
-##conn.close()
+
+conn.close()
 
 
 ##**************************************
