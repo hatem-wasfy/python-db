@@ -85,7 +85,7 @@ conn = psycopg2.connect(
 print("Delete rows from our table part")
 
 curs = conn.cursor()
-curs.execute("TRUNCATE TABLE japantb")
+curs.execute("TRUNCATE TABLE japantb;")
 #conn.close()
 
 ####################################################
@@ -118,6 +118,9 @@ for place in query_result.places:
     
     query =  "INSERT INTO japantb (city, attraction, places, url) VALUES (%s, %s, %s, %s);"
     data = (city, attraction, place_name, place_url)
+    curs = conn.cursor()
+    curs.execute(query, data)
+    
     
     ###global place_and_url
     ###place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
@@ -126,6 +129,7 @@ for place in query_result.places:
         #print(place_details.__dict__.keys())
         #pf=place.photos
     print("******************************")
+conn.commit()
 
 #------------------------------------------------------------------------------
 
@@ -150,7 +154,7 @@ print("***************************************")
 print("Reading all the rows of our table part")
 
 curs = conn.cursor()
-curs.execute("SELECT * FROM japantb")
+curs.execute("SELECT * FROM japantb;")
 for row in curs:
     print(row)
 
