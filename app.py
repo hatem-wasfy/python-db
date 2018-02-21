@@ -211,9 +211,11 @@ for city in cities:
     for attraction in attractions:
         words = "City: " + city + " ,attraction: " + attraction
         print(words)
-        insert(city, attraction, tbname, conn)
-        print("---------------- city,attraction are added to the database --------------")
+        ###insert(city, attraction, tbname, conn)
+        ###print("---------------- city,attraction are added to the database --------------")
         
+        
+readtb(tbname, conn)  
 
     
 
