@@ -32,23 +32,23 @@ attraction = "food"
 query_result = google_places.nearby_search(location=city, keyword=attraction, radius=20000)
 
 place_and_url=""
-    for place in query_result.places:
-        #Returned places from a query are place summaries.
-        ###ok###print(place.__dict__.keys())
-        ###print(place.__dict__)
-        place_name = place.name
-        place_geo_loc = place.geo_location
-        place_id = place.place_id
-        place.get_details()
-        place_url=place.url
-        ###global place_and_url
+for place in query_result.places:
+    #Returned places from a query are place summaries.
+    ###ok###print(place.__dict__.keys())
+    ###print(place.__dict__)
+    place_name = place.name
+    place_geo_loc = place.geo_location
+    place_id = place.place_id
+    place.get_details()
+    place_url=place.url
+    ###global place_and_url
         
-        place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
+    place_and_url +="\n" + place_name + "\n" + "check it here:\n" + place_url + "\n"
         
         #place_details=place.details
         #print(place_details.__dict__.keys())
         #pf=place.photos
-        print("******************************")
+    print("******************************")
 
 print("----------------------------------------------------------"
 print(place_and_url)
